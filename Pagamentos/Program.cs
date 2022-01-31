@@ -9,34 +9,38 @@ namespace Pagamentos
             // private, protected, internal e public
 
             var pagamento = new Pagamento();
-
-            Console.WriteLine(pagamento.Vencimento);
-            pagamento.Vencimento = DateTime.Now;
-            Console.WriteLine(pagamento.Vencimento);
+            var pagamentoCartao = new PagamentoCartaoCredito();
+            pagamento.Pagar("12");
+            pagamentoCartao.Pagar("123");
         }
 
         public class Pagamento
         {
-            // Propriedades
-            private DateTime _vencimento;
-            public DateTime Vencimento
+            public Pagamento()
             {
-                get
-                {
-                    Console.WriteLine("Lendo o valor");
-                    return _vencimento;
-                }
-                set
-                {
-                    Console.WriteLine("Atribuindo o valor");
-                    _vencimento = value;
-                }
+                Console.WriteLine("Iniciando Pagamento");
             }
 
+            // Propriedades
+            DateTime Vencimento;
             Endereco EnderecoCobranca;
 
             // Métodos
-            void Pagar() { }
+            public virtual void Pagar(string numero)
+            {
+                Console.WriteLine("Pagar");
+            }
+            void Pagar(string numero, DateTime vencimento, bool pagarAposVencimento = false) { }
+        }
+
+        public class PagamentoCartaoCredito : Pagamento
+        {
+            public string CEP;
+
+            public override void Pagar(string numero)
+            {
+                Console.WriteLine("Pagar com Cartão");
+            }
         }
 
         public class Endereco
