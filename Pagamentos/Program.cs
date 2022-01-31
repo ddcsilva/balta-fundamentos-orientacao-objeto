@@ -12,28 +12,49 @@ namespace Pagamentos
             pagamentoBoleto.NumeroBoleto = "123";
 
             var pagamentoCartaoCredito = new PagamentoCartaoCredito();
-            pagamentoBoleto.Pagar();
-            pagamentoBoleto.Vencimento = DateTime.Now;
+            pagamentoCartaoCredito.Pagar();
+            pagamentoCartaoCredito.Vencimento = DateTime.Now;
             pagamentoCartaoCredito.NumeroCartao = "321";
 
-            Console.WriteLine("Hello World!");
+            var pagamento = new Pagamento();
+            pagamento.Vencimento = Convert.ToDateTime("2022-01-01");
+            Console.WriteLine(pagamento.ToString());
         }
 
         class Pagamento
         {
+            // Propriedades
             public DateTime Vencimento;
 
-            public void Pagar() { }
+            // Métodos
+            public virtual void Pagar() { }
+
+            public override string ToString()
+            {
+                return Vencimento.ToString("dd/MM/yyyy");
+            }
         }
 
         class PagamentoBoleto : Pagamento
         {
             public string NumeroBoleto;
+
+            public override void Pagar()
+            {
+                // Regra do Boleto
+                Console.WriteLine("Pagamento Realizado com Boleto!");
+            }
         }
 
         class PagamentoCartaoCredito : Pagamento
         {
             public string NumeroCartao;
+
+            public override void Pagar()
+            {
+                // Regra do Cartão de Crédito
+                Console.WriteLine("Pagamento Realizado com Cartão de Crédito!");
+            }
         }
     }
 }
