@@ -13,7 +13,15 @@ namespace Pagamentos
         {
             DateTime Vencimento;
 
-            void Pagar() { }
+            void Pagar()
+            {
+                ConsultarSaldoDoCartao();
+            }
+
+            private void ConsultarSaldoDoCartao()
+            {
+
+            }
         }
     }
 }
