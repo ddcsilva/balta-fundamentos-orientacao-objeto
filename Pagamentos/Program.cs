@@ -9,12 +9,30 @@ namespace Pagamentos
             // private, protected, internal e public
 
             var pagamento = new Pagamento();
+
+            Console.WriteLine(pagamento.Vencimento);
+            pagamento.Vencimento = DateTime.Now;
+            Console.WriteLine(pagamento.Vencimento);
         }
 
         public class Pagamento
         {
             // Propriedades
-            DateTime Vencimento;
+            private DateTime _vencimento;
+            public DateTime Vencimento
+            {
+                get
+                {
+                    Console.WriteLine("Lendo o valor");
+                    return _vencimento;
+                }
+                set
+                {
+                    Console.WriteLine("Atribuindo o valor");
+                    _vencimento = value;
+                }
+            }
+
             Endereco EnderecoCobranca;
 
             // Métodos
