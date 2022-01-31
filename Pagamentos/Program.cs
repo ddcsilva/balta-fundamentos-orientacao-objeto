@@ -14,18 +14,16 @@ namespace Pagamentos
         public class Pagamento
         {
             // Propriedades
-            protected DateTime Vencimento;
+            DateTime Vencimento;
+            Endereco EnderecoCobranca;
 
             // Métodos
-            protected void Pagar() { }
+            void Pagar() { }
         }
 
-        public class PagamentoBoleto : Pagamento
+        public class Endereco
         {
-            void Test()
-            {
-                base.
-            }
+            public string CEP;
         }
     }
 }
