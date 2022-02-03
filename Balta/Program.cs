@@ -1,5 +1,6 @@
 ﻿using System;
 using Balta.ContentContext;
+using Balta.ContentContext.Enums;
 
 namespace Balta
 {
@@ -7,9 +8,13 @@ namespace Balta
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
             var course = new Course();
+            course.Level = EContentLevel.Beginner;
+
+            foreach (var item in course.Modules)
+            {
+
+            }
         }
     }
 }
