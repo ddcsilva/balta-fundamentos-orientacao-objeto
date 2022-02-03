@@ -4,7 +4,7 @@ namespace Balta.ContentContext
 {
     public class Carrer : Content
     {
-        public Carrer()
+        public Carrer(string title, string url) : base(title, url)
         {
             Items = new List<CarrerItem>();
         }
